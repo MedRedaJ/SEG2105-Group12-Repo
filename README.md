@@ -1,3 +1,3 @@
 # SEG2105-Group12-Repo
 This is a repo for the group of SEG2105, group 12
-This is a test for git push
+This is a test commit
