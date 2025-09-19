@@ -1,7 +1,5 @@
 # SEG2105-Group12-Repo
-This is a repo for the group of SEG2105, group 12
-This is a test commit
 
-Test123 Dom
+#This is a repo for the group of SEG2105
 
-This is doms branch
+#Please navigate to group member branches to view their commits
