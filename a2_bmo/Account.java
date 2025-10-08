@@ -138,18 +138,12 @@ public class DebitCard{
     private ChequingAccount chequingAccount;
     private SavingsAccount savingsAccount;
 
-    public DebitCard(Date expiryDate, int cvv){
+    public DebitCard(Date expiryDate, int cvv, ChequingAccount chequingAccount, float dailyLimit){
         this.cardNumber = new Random().nextInt(9999999999999999-1000000000000000+1)+1000000000000000;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
-    }
-
-    public void addChequingAccount(ChequingAccount account){
-        if (this.chequingAccount != null) {
-            System.out.println("This debit card is already linked to a chequing account.");
-            return;
-        }
-        this.chequingAccount = account;
+        this.chequingAccount = chequingAccount;
+        this.dailyLimit = dailyLimit;
     }
 
     public Account getChequingAccount(){
