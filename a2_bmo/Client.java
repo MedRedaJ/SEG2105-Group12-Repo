@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public abstract class Client {
     private String clientId;
     private String name;
@@ -8,8 +9,9 @@ public abstract class Client {
     private Date dob;
     private List<Account> accounts;
 
+
     public Client(String clientId, String name, String address, String phoneNumber, Date dob) {
-        this.clientId = clientId;
+        this.clientId = UUID.randomUUID().toString();
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -74,8 +76,8 @@ class Minor extends Client {
         return guardianId;
     }
 
-    public void setGuardianId(String new_guardianID) {
-        this.guardianId = new_guardianID;
+    public void setGuardianId(String new_guardianId) {
+        this.guardianId = new_guardianId;
     }
 
 }
@@ -136,7 +138,7 @@ class Student extends Client {
 
     class Investor extends Adult {
         private InvestmentAccount investmentAccount;
-        private float averageReturns;
+        private double averageReturns = (-20 +( Math.random() * (20 -20)))/100;
 
         public Investor(String clientId, String name, String address, String phoneNumber, Date dob, String occupation,
                 InvestmentAccount investmentAccount) {
@@ -148,11 +150,7 @@ class Student extends Client {
             return investmentAccount;
         }
 
-        public void setAverageReturns(float averageReturns) {
-            this.averageReturns = averageReturns;
-        }
-
-        public float getAverageReturns() {
+        public double getAverageReturns() {
             return averageReturns;
         }
 
@@ -209,3 +207,4 @@ class Student extends Client {
     }
 
 }
+
