@@ -7,11 +7,11 @@ public class LoyaltyAccount {
         this.numOfPoints = 0;
     }
 
-    public String getRewarsdid () {
+    public String getRewardsId() {
         return rewardsId;
     }
 
-    public int getnumOfPoints(){
+    public int getNumOfPoints() {
         return numOfPoints;
     }
 
@@ -19,7 +19,7 @@ public class LoyaltyAccount {
         numOfPoints = numOfPoints + pts;
     }
 
-    public void detuctPoints(int pts) {
+    public void deductPoints(int pts) {
         numOfPoints = numOfPoints - pts;
     }
     
