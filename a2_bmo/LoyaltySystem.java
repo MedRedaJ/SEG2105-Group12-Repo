@@ -18,13 +18,13 @@ public class LoyaltySystem {
 
         if (REDEEMOPTIONS.containsKey(requestedReward)) {
 
-            if (accountForReward.getnumOfPoints() >= REDEEMOPTIONS.get(requestedReward)) {
-                accountForReward.detuctPoints(REDEEMOPTIONS.get(requestedReward));
+            if (accountForReward.getNumOfPoints() >= REDEEMOPTIONS.get(requestedReward)) {
+                accountForReward.deductPoints(REDEEMOPTIONS.get(requestedReward));
                 System.out.println("Reward Redeemed");
-                System.out.println("Current Points: " + accountForReward.getnumOfPoints());
+                System.out.println("Current Points: " + accountForReward.getNumOfPoints());
             } else {
                 System.out.println("Not enough points!!!");
-                System.out.println("Current Points: " + accountForReward.getnumOfPoints());
+                System.out.println("Current Points: " + accountForReward.getNumOfPoints());
 
             }
         } else {
