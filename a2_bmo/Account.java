@@ -8,7 +8,7 @@ public abstract class Account{
     private String nickname;
     private Client accountOwner;
 
-    public account(Client owner, String nickname, String type){
+    public Account(Client owner, String nickname, String type){
         this.accountOwner = owner;
         this.nickname = nickname;
         this.accountType = type;
@@ -26,6 +26,9 @@ public abstract class Account{
     }
     public Client getAccountOwner(){
         return accountOwner;
+    }
+    public String getNickname(){
+        return nickname;
     }
     public void deposit(float amount){
         balance += amount;
@@ -129,8 +132,8 @@ class LoanAccount extends Account{
     }
 }
 
-public class DebitCard{
-    private int cardNumber;
+class DebitCard{
+    private long cardNumber;
     private Date expiryDate;
     private int cvv;
     private String nickname;
@@ -138,16 +141,33 @@ public class DebitCard{
     private ChequingAccount chequingAccount;
     private SavingsAccount savingsAccount;
 
-    public DebitCard(Date expiryDate, int cvv, ChequingAccount chequingAccount, float dailyLimit){
-        this.cardNumber = new Random().nextInt(9999999999999999-1000000000000000+1)+1000000000000000;
-        this.expiryDate = expiryDate;
-        this.cvv = cvv;
+    public DebitCard(ChequingAccount chequingAccount, float dailyLimit){
+        // Generate a pseudo-random 16-digit card number safely using nextLong
+        long part = Math.abs(new Random().nextLong());
+        this.cardNumber = 1000000000000000L + (part % 9000000000000000L);
+        this.expiryDate = new Date(System.currentTimeMillis() + 3L * 365 * 24 * 60 * 60 * 1000); // 3 years from now
+        this.cvv = new Random().nextInt(900) + 100; // Generate a random 3-digit CVV
         this.chequingAccount = chequingAccount;
         this.dailyLimit = dailyLimit;
     }
 
+    public Date getExpiryDate(){
+        return expiryDate;
+    }
+
+    public int getCvv(){
+        return cvv;
+    }
+
+    public long getCardNumber(){
+        return cardNumber;
+    }
+
     public Account getChequingAccount(){
         return chequingAccount;
+    }
+    public String getNickname(){
+        return nickname;
     }
 
     public void addSavingsAccount(SavingsAccount account){
@@ -159,9 +179,6 @@ public class DebitCard{
     }
     public Account getSavingsAccount(){
         return savingsAccount;
-    }
-    public int getCardNumber(){
-        return cardNumber;
     }
     public float getAccountBalance(){
         return chequingAccount.getBalance() + savingsAccount.getBalance();
